@@ -123,3 +123,26 @@ Usando many2one ,modificamos los modelos curso y sesión para reflejar la relaci
 
 1. Modificamos el models.py y le añadimos los many2one relevantes
 2. Los añadimos en openacademy.xml en las vistas
+
+##ONCHANGE
+
+La siguiente parte de código no sirve para conseguir una advertencia cuando se introducen valores no válidos, como por ejemplo, un número nativo de asientos o más participantes que asientos.
+
+##RESTRICCIONES DE UN MÓDULO
+
+De nuevo introduciremos código en Models.py, referente a restricciones, en este caso servirá para advertirnos si el instructor no está presente en los asientos de su propia sesión.
+Continuamos en Models.py. En este caso se añadirá una limitación, la cual comprueba que la descripción del curso y el título del curso son diferentes, y también que el nombre del curso es único.
+Debido a lo introducido anteriormente se ha deshabilitado la posibilidad de utilizar la función “duplicar”, por ello debemos volver a implementarla (con el siguiente código):
+
+##VISTAS AVANZADAS
+En el siguiente paso, nos dedicaremos a darle formato a diferentes partes. Para la primera haremos una modificación en el apartado Sesion  de tal forma que las sesiones que duren menos de cinco días serán de color azul , y las que duren más de quince días, de color rojo.
+Continuamos con la agregación de un calendario para el apartado Sesion que nos permitirá ver los eventos asociados a cada curso abierto.
+Puntos de vista de la búsqueda, con esto nos referimos a añadir un botón para filtrar los cursos para los cuales el usuario actual es el responsable en la vista de búsqueda de cursos que se ha seleccionado por defecto.
+Lo siguiente que agregaremos serán los diagramas de Gantt, que permitirá al usuario ver la programación de sesiones relacionada con el módulo openacademy.
+Para continuar, agregaremos una vista de gráficos en sesión que muestre, para cada curso, el número de asistentes bajo la forma de un gráfico de barras.
+Por último, en este tutorial añadiremos la vista kanba, una vista que muestra las sesiones agrupadas por columnas.
+
+
+
+
+
