@@ -62,3 +62,64 @@ Este modelo permitirá apuntarse a personas en los cursos y podrán elegir el d�
 * Añadimos el acceso a la session en openacademy.xml
 
 ##Relaciones Many2one
+Usando many2one ,modificamos los modelos curso y sesión para reflejar la relación con otros modelos
+* Cada curso tiene un usuario responsable; el valor del campo es un registro del modelo incorporado res.users. 
+* Cada sesión tiene un instructor; el valor del campo es un registro del modelo incorporado res.partner. 
+* Cada sesión se relaciona con un curso; el valor del campo es un registro del modelo openacademy.course y es necesario. 
+*Adaptamos la vista
+
+1. Modificamos el models.py y le añadimos los many2one relevantes
+2. Los añadimos en openacademy.xml en las vistas
+
+##Relaciones One2many
+Es la inversa de many2one , modifica los modelos para reflejar la relacione entre cursos y sesiones
+
+1. modificamos la clase course
+2.Añadimos el campo en la vista
+
+##Relación múltiple many2many
+Cada registro de un modelo puede relacionarse con cualquier numero de registros del otro modelo.
+
+Usamos many2many, para modificar el modelo Session  y así relacionar cada sesión con unos asistentes. Los asistentes serán representados por un registro.
+
+* Modificamos la clase Session
+*añadimos a la vista
+
+##Editar el contenido existente
+* Ahora usaremos el modelo herencia para modificar el modelo del socio y añadiremos un instructor de tipo booleano, y usaremos many2many para relacionar la sesión con el socio
+* Usaremos la vista de herencia, para que se vean las casillas
+
+Para ello:
+1. Crearemos un fichero partner.py y lo añadiremos al __inti__.py
+2.Crearemos un fichero partner.xml y lo añadiremos al  __openerp__.py 
+
+##Dominios en los campos relacionales
+Cuando seleccionamos el instructor en la session, solo los instructores(instructor=True) deben ser visibles
+
+##Dominios mas complejos
+Creamos un nuevo socio con categorías Teacher / Level 1 y Teacher / Level 2. 
+El instructor puede ser instructor o profesor dependiendo de la session
+
+1. Modificamos el dominio en la sesión en models.py
+2.Modificamos partner xml para obtener el acceso a las categorías del asociado
+
+## Campos computados
+* Añadimos el porcentaje de coger sitios en la session
+* Lo mostramos en las vistas
+* Creamos la barra de porcentaje
+ 
+1. Añadimos un campo computado a la session en models.py
+2. Mostramos el campo en la vista en openacademy.xml
+
+##Valores por defecto
+ Marcaremos por defecto la fecha de hoy a crear la session
+* Para ello definimos start_date como today 
+* Añadiremos el campo active en la clase session,y pondremos la session active por defecto ##Relaciones Many2one
+Usando many2one ,modificamos los modelos curso y sesión para reflejar la relación con otros modelos
+* Cada curso tiene un usuario responsable; el valor del campo es un registro del modelo incorporado res.users. 
+* Cada sesión tiene un instructor; el valor del campo es un registro del modelo incorporado res.partner. 
+* Cada sesión se relaciona con un curso; el valor del campo es un registro del modelo openacademy.course y es necesario. 
+*Adaptamos la vista
+
+1. Modificamos el models.py y le añadimos los many2one relevantes
+2. Los añadimos en openacademy.xml en las vistas
